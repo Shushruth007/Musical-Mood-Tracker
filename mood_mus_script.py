@@ -80,23 +80,48 @@ def append_to_csv(track_features, filename):
     df['loudness'] = pd.DataFrame(normalize_loudness(df[['loudness']].values))
 
     print ('Total tracks in data set', len(df))
-    df.to_csv(filename, mode='a', index=False, header=False)
+    with open(filename, 'a') as f:
+        df.to_csv(f, header=f.tell()==0)
 
-def main(playlist, mood, filename):
+
+# Get music from single playlist
+def single(playlist, mood, filename):
     spot = sp.Spotify(client_credentials_manager=SpotifyClientCredentials())
     print ("Getting user tracks from playlists")
     tracks = get_tracks_from_playlist(playlist, spot)
     print ("Getting track audio features")
-    tracks_with_features = get_features(tracks, spot, mood)
+    tracks_with_features = get_features(tracks,spot, mood)
     print ("Storing into csv")
     write_to_csv(tracks_with_features, filename)
+
+
+#get music from multiple playlists, in text file
+def multi(playlist, mood, filename):
+    spot = sp.Spotify(client_credentials_manager=SpotifyClientCredentials())
+    with open('topology_list.txt') as topo_file:
+        for line in topo_file:
+            print ("Getting user tracks from playlists")
+            tracks = get_tracks_from_playlist(playlist, spot)
+            print ("Getting track audio features")
+            tracks_with_features = get_features(tracks,spot, mood)
+            print ("Storing into csv")
+            append_to_csv(tracks_with_features, filename)
+
+
+def main(multi, playlist, mood, filename):
+    if (multi=="y"):
+        multi(playlist, mood, filename)
+    else:
+        single(playlist, mood, filename)
+
 
 if __name__ == '__main__':
     print ('Starting...')
     parser = argparse.ArgumentParser(description='this script will grab tracks from playlists')
+    parser.add_argument('--multi', help='multiple files')
     parser.add_argument('--pl', help='playlist')
     parser.add_argument('--md', help='mood')
-    parser.add_argument("--fn", help="filename")
+    parser.add_argument("-fn", help="filename")
 
     args = parser.parse_args()
-    main(args.pl, args.md, args.fn)
+    main(args.multi, args.pl, args.md, args.fn)
