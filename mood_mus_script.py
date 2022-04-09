@@ -52,12 +52,15 @@ def get_features(tracks, sp, mood):
     return tracks_with_features
 
 def get_tracks_from_playlist(playlist, sp):
-    playlist = sp.playlist_items(playlist, limit=1000)
+    offset = 0
     trackList = []
-    tracks = playlist
-    for i, item in enumerate(tracks['items']):
-        track = item['track']
-        trackList.append(dict(name=track['name'], id=track['id'], artist=track['artists'][0]['name']))
+    length = sp.playlist_items(playlist)['total']
+    while (offset < length):
+        tracks = sp.playlist_items(playlist, limit=50, offset=offset)
+        offset += 50
+        for i, item in enumerate(tracks['items']):
+            track = item['track']
+            trackList.append(dict(name=track['name'], id=track['id'], artist=track['artists'][0]['name']))
 
     # print(trackList[0])
     return trackList
@@ -81,7 +84,7 @@ def append_to_csv(track_features, filename):
 
     print ('Total tracks in data set', len(df))
     with open(filename, 'a') as f:
-        df.to_csv(f, header=f.tell()==0)
+        df.to_csv(f, header=f.tell()==0, index=False)
 
 
 # Get music from single playlist
@@ -96,12 +99,12 @@ def single(playlist, mood, filename):
 
 
 #get music from multiple playlists, in text file
-def multi(playlist, mood, filename):
+def multiple(playlist, mood, filename):
     spot = sp.Spotify(client_credentials_manager=SpotifyClientCredentials())
-    with open('topology_list.txt') as topo_file:
+    with open(playlist) as topo_file:
         for line in topo_file:
             print ("Getting user tracks from playlists")
-            tracks = get_tracks_from_playlist(playlist, spot)
+            tracks = get_tracks_from_playlist(line, spot)
             print ("Getting track audio features")
             tracks_with_features = get_features(tracks,spot, mood)
             print ("Storing into csv")
@@ -110,7 +113,7 @@ def multi(playlist, mood, filename):
 
 def main(multi, playlist, mood, filename):
     if (multi=="y"):
-        multi(playlist, mood, filename)
+        multiple(playlist, mood, filename)
     else:
         single(playlist, mood, filename)
 
@@ -121,7 +124,7 @@ if __name__ == '__main__':
     parser.add_argument('--multi', help='multiple files')
     parser.add_argument('--pl', help='playlist')
     parser.add_argument('--md', help='mood')
-    parser.add_argument("-fn", help="filename")
+    parser.add_argument("--fn", help="filename")
 
     args = parser.parse_args()
     main(args.multi, args.pl, args.md, args.fn)
