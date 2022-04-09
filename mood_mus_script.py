@@ -59,8 +59,11 @@ def get_tracks_from_playlist(playlist, sp):
         tracks = sp.playlist_items(playlist, limit=50, offset=offset)
         offset += 50
         for i, item in enumerate(tracks['items']):
-            track = item['track']
-            trackList.append(dict(name=track['name'], id=track['id'], artist=track['artists'][0]['name']))
+            try:
+                track = item['track']
+                trackList.append(dict(name=track['name'], id=track['id'], artist=track['artists'][0]['name']))
+            except:
+                pass
 
     # print(trackList[0])
     return trackList
@@ -83,7 +86,7 @@ def append_to_csv(track_features, filename):
     df['loudness'] = pd.DataFrame(normalize_loudness(df[['loudness']].values))
 
     print ('Total tracks in data set', len(df))
-    with open(filename, 'a') as f:
+    with open(filename, 'a', encoding="utf-8") as f:
         df.to_csv(f, header=f.tell()==0, index=False)
 
 
@@ -104,6 +107,7 @@ def multiple(playlist, mood, filename):
     with open(playlist) as topo_file:
         for line in topo_file:
             print ("Getting user tracks from playlists")
+            print(line)
             tracks = get_tracks_from_playlist(line, spot)
             print ("Getting track audio features")
             tracks_with_features = get_features(tracks,spot, mood)
@@ -112,7 +116,8 @@ def multiple(playlist, mood, filename):
 
 
 def main(multi, playlist, mood, filename):
-    if (multi=="y"):
+    print("Start")
+    if (multi):
         multiple(playlist, mood, filename)
     else:
         single(playlist, mood, filename)
@@ -121,10 +126,10 @@ def main(multi, playlist, mood, filename):
 if __name__ == '__main__':
     print ('Starting...')
     parser = argparse.ArgumentParser(description='this script will grab tracks from playlists')
-    parser.add_argument('--multi', help='multiple files')
+    parser.add_argument('-m', action='store_true')
     parser.add_argument('--pl', help='playlist')
     parser.add_argument('--md', help='mood')
     parser.add_argument("--fn", help="filename")
 
     args = parser.parse_args()
-    main(args.multi, args.pl, args.md, args.fn)
+    main(args.m, args.pl, args.md, args.fn)
