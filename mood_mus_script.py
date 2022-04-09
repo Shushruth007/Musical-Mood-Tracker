@@ -52,7 +52,7 @@ def get_features(tracks, sp, mood):
     return tracks_with_features
 
 def get_tracks_from_playlist(playlist, sp):
-    playlist = sp.playlist_items(playlist)
+    playlist = sp.playlist_items(playlist, limit=1000)
     trackList = []
     tracks = playlist
     for i, item in enumerate(tracks['items']):
@@ -72,8 +72,15 @@ def write_to_csv(track_features, filename):
     print ('Total tracks in data set', len(df))
     df.to_csv(filename, index=False)
 
+def append_to_csv(track_features, filename):
+    df = pd.DataFrame(track_features)
+    df.drop_duplicates(subset=['name','artist'])
 
+    # normalizing loudness
+    df['loudness'] = pd.DataFrame(normalize_loudness(df[['loudness']].values))
 
+    print ('Total tracks in data set', len(df))
+    df.to_csv(filename, mode='a', index=False, header=False)
 
 def main(playlist, mood, filename):
     spot = sp.Spotify(client_credentials_manager=SpotifyClientCredentials())
