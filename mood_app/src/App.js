@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div>
-      <Calendar onChange={onChange} value={value} />
+      <Calendar onChange={onChange} value={value}/>
     </div>
   );
 }

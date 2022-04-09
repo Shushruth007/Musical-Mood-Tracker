@@ -1,3 +1,96 @@
 .App {
   text-align: center;
 }
+
+.react-calendar { 
+  margin-top: 100px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 600px;
+  max-width: 100%;
+  background-color: #fff;
+  color: #222;
+  border-radius: 8px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.125em;
+ }
+ .react-calendar__navigation button {
+  color: rgb(75, 193, 197);
+  min-width: 44px;
+  background: none;
+  font-size: 16px;
+  margin-top: 8px;
+ }
+ .react-calendar__navigation button:enabled:hover,
+ .react-calendar__navigation button:enabled:focus {
+  background-color: #f8f8fa;
+ }
+ .react-calendar__navigation button[disabled] {
+  background-color: #f0f0f0;
+ }
+ abbr[title] {
+  text-decoration: none;
+ }
+  .react-calendar__month-view__days__day--weekend {
+  color: #d10000;
+ } 
+ .react-calendar__tile:enabled:hover,
+ .react-calendar__tile:enabled:focus {
+  background: #f8f8fa;
+  color: rgb(75, 193, 197);
+  border-radius: 6px;
+ }
+ .react-calendar__tile--now {
+  background: rgb(177, 234, 236);
+  border-radius: 6px;
+  font-weight: bold;
+  color: rgb(75, 193, 197);
+ }
+ .react-calendar__tile--now:enabled:hover,
+ .react-calendar__tile--now:enabled:focus {
+  background: rgb(177, 234, 236);
+  border-radius: 6px;
+  font-weight: bold;
+  color: rgb(75, 193, 197);
+ }
+ .react-calendar__tile--hasActive:enabled:hover,
+ .react-calendar__tile--hasActive:enabled:focus {
+  background: #f8f8fa;
+ }
+ .react-calendar__tile--active {
+  background: rgb(75, 193, 197);
+  border-radius: 6px;
+  font-weight: bold;
+  color: white;
+ }
+ .react-calendar__tile--active:enabled:hover,
+ .react-calendar__tile--active:enabled:focus {
+  background: rgb(75, 193, 197);
+  color: white;
+ }
+ .react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #f8f8fa;
+ }
+ .react-calendar__tile--range {
+  background: #f8f8fa;
+  color: rgb(75, 193, 197);
+  border-radius: 0;
+ }
+ .react-calendar__tile--rangeStart {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background: rgb(75, 193, 197);
+  color: white;
+ }
+ .react-calendar__tile--rangeEnd {
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background: rgb(75, 193, 197);
+  color: white;
+ }
