@@ -15,8 +15,11 @@ This is our first hackathon so we did not really know what to expect from one. C
 
 
 ## Accomplishments that we're proud of
+We are very excited to showcase a succesful project at our first hackathon. We really enjoyed learning new skills and techniques through this project. We really hope that we can flesh this project and create somthing useful that might help people. 
 
 
 ## What we learned
 
+
 ## What's next for VibeCheck
+We will work on incoperting User Authentication into the website so that everyone can use it. We want to expand and fine tune our dataset to make better predictions. We would like to replace our python backend with javaScript for more efficency.  
