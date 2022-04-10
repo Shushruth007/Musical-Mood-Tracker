@@ -75,19 +75,19 @@ function App() {
     }
   
     if (datesToAddClassTo.find(dDate => isSameDay(dDate, date))){
-      if (mood == 1) {
+      if (mood == 5) {
         return 'verysad';
       }
-      else if (mood == 2) {
+      else if (mood == 4) {
         return 'sad';
       }
       else if (mood == 3) {
         return 'okay';
       }
-      else if (mood == 4) {
+      else if (mood == 2) {
         return 'good';
       }
-      else if (mood == 5) {
+      else if (mood == 1) {
         return 'great';
       }
       else {
