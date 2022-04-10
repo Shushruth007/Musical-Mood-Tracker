@@ -97,7 +97,7 @@ function App() {
   
   }
   
-  let serverUrl = 'http://05ee-66-75-246-191.ngrok.io';
+  let serverUrl = 'https://05ee-66-75-246-191.ngrok.io';
 
   function callBackend() {
     fetch(serverUrl)
