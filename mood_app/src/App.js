@@ -36,11 +36,11 @@ const gr = [
 
 
 var moods = {
-  'Verysad': '#FF0000',
-  'Sad': '#FF8F00',
-  'Okay': '#FBFF00',
-  'Good': '#AEFF00',
-  'Great': '#03D015'
+  'Verysad': '#FF2E1D',
+  'Sad': '#FF871D',
+  'Okay': '#FFE438',
+  'Good': '#CCFF0E',
+  'Great': '#6DFF0E'
 };
 
  //Change to test the different moods
@@ -122,7 +122,7 @@ function App() {
         <span className='bold'>Today's Date:</span>{' '}
         {today.toDateString()}
       </p>
-      <button onClick={callBackend}>click me!</button>
+      <button onClick={callBackend}>Get Started!</button>
     </div>
   );
 }
