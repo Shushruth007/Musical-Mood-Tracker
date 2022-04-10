@@ -1,7 +1,7 @@
 # Musical Mood Tracker
 
 ## Inspiration
-We live in unprecidented times. This has taken a severe toll on our collective mental health. Journaling and Mood Tracking have proven to be effective in helping people be more proactive about their mental well being. Wouldn't it be convinent if you could track your mental health automatically based on your behaviour? Our choice of music often reflects the way we're feeling.
+We live in unprecidented times. This has taken a severe toll on our collective mental health. Journaling and Mood Tracking has proven to be effective in helping people be more proactive about their mental well being. Wouldn't it be convinent if you could track your mental health automatically based on your behaviour? Our choice of music often reflects the way we're feeling.
 
 
 ## What it does
