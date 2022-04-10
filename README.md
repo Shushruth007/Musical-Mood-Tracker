@@ -11,7 +11,7 @@ We use the Spotify API to get a users recently played songs. We extract audio fe
 We used React for the front end of our app. The backend is a Python script hosted on a Flask server using ngrok. We used Spotipy for the Spotify API calls. We collected our dataset using Python as well. We selected playsits with descriptions that we categorized into a 5 point scale ranging from Great to Very Sad. We used a Mage.AI categorization model to predict a users mood using Spotify audio features.
 
 ## Challenges we ran into
-
+This is our first hackathon
 
 
 ## Accomplishments that we're proud of
