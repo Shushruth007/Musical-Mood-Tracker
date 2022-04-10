@@ -95,6 +95,22 @@ h1 {
  }
 
 
- .myClassName {
-  color:red;
+.verysad {
+  background: #FF0000;
+}
+
+.sad {
+  background: #FF8F00;
+}
+
+.okay {
+  background: #FBFF00;
+}
+
+.good {
+  background: #AEFF00;
+}
+
+.great {
+  background: #03D015;
 }
