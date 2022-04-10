@@ -43,58 +43,71 @@ var moods = {
   'Great': '#03D015'
 };
 
-const mood = '' //Change to test the different moods
+ //Change to test the different moods
 const today = new Date();
 
 const datesToAddClassTo = [today];
 
-function tileClassName({ date, view }) {
-  // Add class to tiles in month view only
 
-  if(vs.find(x => x===moment(date).format("DD-MM-YYYY"))){
-    return  'verysad'
-  }
-  if(s.find(x => x===moment(date).format("DD-MM-YYYY"))){
-    return  'sad'
-  }
-  if(o.find(x => x===moment(date).format("DD-MM-YYYY"))){
-    return  'okay'
-  }
-  if(go.find(x => x===moment(date).format("DD-MM-YYYY"))){
-    return  'good'
-  }
-  if(gr.find(x => x===moment(date).format("DD-MM-YYYY"))){
-    return  'great'
-  }
-
-  if (datesToAddClassTo.find(dDate => isSameDay(dDate, date))){
-    if (mood == 'Verysad') {
-      return 'verysad';
-    }
-    else if (mood == 'Sad') {
-      return 'sad';
-    }
-    else if (mood == 'Okay') {
-      return 'okay';
-    }
-    else if (mood == 'Good') {
-      return 'good';
-    }
-    else if (mood == 'Great') {
-      return 'great';
-    }
-    else {
-      return 'grey';
-    }
-  }
-
-}
 
 
 function App() {
   const [date, setDate] = useState(new Date());
-  
+  const [mood, setMood] = useState(0);
 
+  function tileClassName({ date, view }) {
+    // Add class to tiles in month view only
+  
+    if(vs.find(x => x===moment(date).format("DD-MM-YYYY"))){
+      return  'verysad'
+    }
+    if(s.find(x => x===moment(date).format("DD-MM-YYYY"))){
+      return  'sad'
+    }
+    if(o.find(x => x===moment(date).format("DD-MM-YYYY"))){
+      return  'okay'
+    }
+    if(go.find(x => x===moment(date).format("DD-MM-YYYY"))){
+      return  'good'
+    }
+    if(gr.find(x => x===moment(date).format("DD-MM-YYYY"))){
+      return  'great'
+    }
+  
+    if (datesToAddClassTo.find(dDate => isSameDay(dDate, date))){
+      if (mood == 1) {
+        return 'verysad';
+      }
+      else if (mood == 2) {
+        return 'sad';
+      }
+      else if (mood == 3) {
+        return 'okay';
+      }
+      else if (mood == 4) {
+        return 'good';
+      }
+      else if (mood == 5) {
+        return 'great';
+      }
+      else {
+        return 'grey';
+      }
+    }
+  
+  }
+  
+  let serverUrl = 'http://05ee-66-75-246-191.ngrok.io';
+
+  function callBackend() {
+    fetch(serverUrl)
+    .then(res => res.json())
+    .then(data => {
+        console.log(data.message)
+        setMood(data.message)
+    })
+      
+}
   return (  
     
     <div className='app'>
@@ -109,6 +122,7 @@ function App() {
         <span className='bold'>Today's Date:</span>{' '}
         {today.toDateString()}
       </p>
+      <button onClick={callBackend}>click me!</button>
     </div>
   );
 }
