@@ -1,21 +1,38 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import moment from 'moment'
 
 import './App.css';
 
-
-import { isWithinInterval } from "date-fns";
 import { differenceInCalendarDays } from 'date-fns';
 
 function isSameDay(a, b) {
   return differenceInCalendarDays(a, b) === 0;
 }
 
-function isWithinRange(date, range) {
-  return isWithinInterval(date, { start: range[0], end: range[1] });
-}
+const vs = [
+  '01-04-2022',
+  '07-04-2022'
+]
 
+const s = [
+  '09-04-2022'
+]
+
+const o = [
+  '03-04-2022',
+  '05-04-2022',
+  '06-04-2022'
+]
+
+const go = [
+  '08-04-2022'
+]
+const gr = [
+  '02-04-2022',
+  '04-04-2022',
+]
 
 
 var moods = {
@@ -26,38 +43,56 @@ var moods = {
   'Great': '#03D015'
 };
 
-const mood = 'Great' //Change to test the different moods
+const mood = '' //Change to test the different moods
 const today = new Date();
 
 const datesToAddClassTo = [today];
 
 function tileClassName({ date, view }) {
   // Add class to tiles in month view only
-  if (view === 'month') {
-    // Check if a date React-Calendar wants to check is on the list of dates to add class to
-    if (datesToAddClassTo.find(dDate => isSameDay(dDate, date))) {
-      if (mood == 'Verysad') {
-        return 'verysad';
-      }
-      else if (mood == 'Sad') {
-        return 'sad';
-      }
-      else if (mood == 'Okay') {
-        return 'okay';
-      }
-      else if (mood == 'Good') {
-        return 'good';
-      }
-      else {
-        return 'great';
-      }
+
+  if(vs.find(x => x===moment(date).format("DD-MM-YYYY"))){
+    return  'verysad'
+  }
+  if(s.find(x => x===moment(date).format("DD-MM-YYYY"))){
+    return  'sad'
+  }
+  if(o.find(x => x===moment(date).format("DD-MM-YYYY"))){
+    return  'okay'
+  }
+  if(go.find(x => x===moment(date).format("DD-MM-YYYY"))){
+    return  'good'
+  }
+  if(gr.find(x => x===moment(date).format("DD-MM-YYYY"))){
+    return  'great'
+  }
+
+  if (datesToAddClassTo.find(dDate => isSameDay(dDate, date))){
+    if (mood == 'Verysad') {
+      return 'verysad';
+    }
+    else if (mood == 'Sad') {
+      return 'sad';
+    }
+    else if (mood == 'Okay') {
+      return 'okay';
+    }
+    else if (mood == 'Good') {
+      return 'good';
+    }
+    else if (mood == 'Great') {
+      return 'great';
+    }
+    else {
+      return 'grey';
     }
   }
+
 }
 
 
 function App() {
-  const [date, setDate] = useState(today);
+  const [date, setDate] = useState(new Date());
   
 
   return (  
@@ -66,6 +101,8 @@ function App() {
       <h1 className='text-center'>Spotify Mood Calender</h1>
       <div className='calendar-container'>
         <Calendar 
+        onChange={setDate} 
+        value={date}
         tileClassName={tileClassName}/>
       </div>
       <p className='text-center'>
