@@ -11,11 +11,15 @@ We use the Spotify API to get a users recently played songs. We extract audio fe
 We used React for the front end of our app. The backend is a Python script hosted on a Flask server using ngrok. We used Spotipy for the Spotify API calls. We collected our dataset using Python as well. We selected playsits with descriptions that we categorized into a 5 point scale ranging from Great to Very Sad. We used a Mage.AI categorization model to predict a users mood using Spotify audio features.
 
 ## Challenges we ran into
-This is our first hackathon
+This is our first hackathon so we did not really know what to expect from one. Collectivly we did not have a lot of experience with web development thus we used Python for most of the backend. 
 
 
 ## Accomplishments that we're proud of
+We are very excited to showcase a succesful project at our first hackathon. We really enjoyed learning new skills and techniques through this project. We really hope that we can flesh this project and create somthing useful that might help people. 
+
 
 ## What we learned
 
+
 ## What's next for VibeCheck
+We will work on incoperting User Authentication into the website so that everyone can use it. We want to expand and fine tune our dataset to make better predictions. We would like to replace our python backend with javaScript for more efficency.  
