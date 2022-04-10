@@ -118,63 +118,18 @@ function App() {
         value={date}
         tileClassName={tileClassName}/>
       </div>
-      <p className='text-center'>
-        <span className='bold'>Today's Date:</span>{' '}
-        {today.toDateString()}
-      </p>
-      <button onClick={callBackend}>Get Started!</button>
+      <div className='date'>
+        <p className='text-center'>
+          <span className='bold'>Today's Date:</span>{' '}
+          {today.toDateString()}
+        </p>
+        </div>
+      <div className='start'>
+        <button className='start' onClick={callBackend}>Get Started!</button>
+      </div>
     </div>
   );
 }
 
 export default App;
 
-
-
-/*class App extends React.Component {
-  constructor(props)
-  {
-    super(props)
-    this.state={
-      date:new Date(),
-      dayColor: "red"
-    }
-  }
-
-  previouslySelectedDates = []
-
-  /* tileClass = ({date, view}) => {
-    if (view == 'month') {
-      if (previouslySelectedDates.find(currentDate => currentDate == date)) {
-        return 'newClass'
-      }
-    }
-   }*/
-
-  /*onChange = date => {
-    this.previouslySelectedDates.add(date)
-    this.setState({ date })
-  }
-
-  [date, setDate] = useState(new Date());
-
-  onDateChange = (newDate) => {
-    setDate(newDate);
-    console.log(newDate);
-  }
-
-
-  render()
-  {
-    return (
-      <Calendar
-          onChange={onDateChange}
-          value={date}
-          showNeighboringMonth={false}
-          locale={"en-US"}
-       />
-  );
-  }
-}
-
-export default App;*/
