@@ -39,18 +39,15 @@ h1 {
  .react-calendar__tile:enabled:focus {
   background: #f8f8fa;
   color: #222;
-  border-radius: 6px;
  }
  .react-calendar__tile--now {
   background: #6f48eb33;
-  border-radius: 6px;
   font-weight: bold;
   color: #222;
  }
  .react-calendar__tile--now:enabled:hover,
  .react-calendar__tile--now:enabled:focus {
   background: #6f48eb33;
-  border-radius: 6px;
   font-weight: bold;
   color: #222;
  }
@@ -60,7 +57,6 @@ h1 {
  }
  .react-calendar__tile--active {
   background: white;
-  border-radius: 6px;
   font-weight: bold;
   color: #222;
  }
@@ -131,4 +127,11 @@ h1 {
   padding: 15px 32px;
   text-align: center;
   font-size: 16px;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+  border-radius: 10px;
+}
+
+.start button:hover {
+  background-color: #009211;
+  color: rgb(0, 0, 0);
 }
