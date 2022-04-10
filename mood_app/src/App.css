@@ -34,13 +34,13 @@
   text-decoration: none;
  }
   .react-calendar__month-view__days__day--weekend {
-  color: #d10000;
+  color: #222;
  } 
  .react-calendar__tile:enabled:hover,
  .react-calendar__tile:enabled:focus {
   background: #f8f8fa;
   color: rgb(75, 193, 197);
-  border-radius: 6px;
+  border-radius: 20px;
  }
  .react-calendar__tile--now {
   background: rgb(177, 234, 236);
@@ -91,6 +91,9 @@
   border-bottom-left-radius: 20px;
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
-  background: rgb(75, 193, 197);
+  background: rgb(255, 0, 0);
   color: white;
  }
+.newClass {
+
+}
